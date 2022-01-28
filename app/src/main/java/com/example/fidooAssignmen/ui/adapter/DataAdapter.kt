@@ -15,7 +15,9 @@ class DataAdapter(val context: Context,private val dataList : List<Data>) : Recy
     }
     override fun onBindViewHolder(holder: DataViewHolder, pos: Int) {
         val data = dataList[pos]
-        holder.itemLayoutBinding.tvPageNo.text = "Page No :- "+data.id
+
+        holder.itemLayoutBinding.tvPageNo.text = "Id :- "+data.id
+        holder.itemLayoutBinding.tvdisc.text = "Title:- "+data.title
         holder.itemLayoutBinding.tvTitle.text = data.body
     }
     override fun getItemCount(): Int {

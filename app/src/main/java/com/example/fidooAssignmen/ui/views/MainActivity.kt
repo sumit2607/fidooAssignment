@@ -12,6 +12,9 @@ import com.example.fidooAssignmen.data.Data
 import com.example.fidooAssignmen.databinding.ActivityMainBinding
 import com.example.fidooAssignmen.ui.adapter.DataAdapter
 import com.example.fidooAssignmen.ui.viewmodel.DataViewModel
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.ktx.messaging
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -20,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainAdapter : DataAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        FirebaseMessaging.getInstance().subscribeToTopic("noti"); // for sending notification
+
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         mainViewModel = ViewModelProvider(this).get(DataViewModel::class.java)
         setRecyclerAdaptor()
@@ -40,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun setRecyclerAdaptor() {
         mainAdapter = DataAdapter(this,list)
-        val linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        val linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding.recyclerView.apply {
             adapter = mainAdapter
             layoutManager = linearLayoutManager
