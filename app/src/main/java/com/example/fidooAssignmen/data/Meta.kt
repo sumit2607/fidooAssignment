@@ -1,6 +1,4 @@
-package com.example.fidooassignment.Model
-
-
+package com.example.fidooAssignmen.data
 
 
 data class Meta(

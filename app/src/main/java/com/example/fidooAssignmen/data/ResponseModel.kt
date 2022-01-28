@@ -1,9 +1,7 @@
-package com.example.fidooassignment.Model
+package com.example.fidooAssignmen.data
 
 
-
-
-data class Responce(
+data class ResponseModel(
     @SerializedName("data")
     val `data`: List<Data>,
     @SerializedName("meta")
